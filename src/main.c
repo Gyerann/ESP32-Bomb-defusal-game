@@ -3,8 +3,9 @@
 #include "freertos/task.h"
 #include "driver/gpio.h"
 #include "tm1637.h"
+#include "analog_servo.h"
 
-//TM1637 pins
+#define PWM_PIN GPIO_NUM_33
 #define TM1637_CLK_PIN GPIO_NUM_18
 #define TM1637_DIO_PIN GPIO_NUM_19
 #define BEEP_PIN GPIO_NUM_13
@@ -16,6 +17,7 @@
 
 #define SOUND_ON false
 
+//Beeps
 void beep() {
     if(SOUND_ON){
         gpio_set_level(BEEP_PIN, 1);
@@ -26,6 +28,7 @@ void beep() {
     }  
 }
 
+//Updates display timer
 void update_timer(tm1637_led_t* display, int *currTime) {
     *currTime = *currTime - 1;
     tm1637_set_number_lead_dot(display, *currTime, 0, 0b11111111);
@@ -49,6 +52,7 @@ void init_gpio_pins(){
     gpio_set_level(STRIKE_BTN, 0);
 }
 
+//Adds a strike
 void add_strike(int *currStrikes){
 *currStrikes = *currStrikes + 1;
 switch(*currStrikes) {
@@ -64,9 +68,11 @@ switch(*currStrikes) {
 }
 }
 
+//Main
 void app_main() {
 
 init_gpio_pins();
+init_pwm_fade(PWM_PIN);
 
 //Display setup
 tm1637_led_t* tm1637 = tm1637_init(TM1637_CLK_PIN, TM1637_DIO_PIN);
@@ -79,7 +85,9 @@ int currStrikes = 0;
 
 bool solved = false;
 
-    while (secondsLeft != 0 && !solved) {
+set_servo_angle(PWM_PIN, 75);
+
+    while (secondsLeft > 0 && !solved) {
         update_timer(tm1637, &secondsLeft);
 
         if(gpio_get_level(STRIKE_BTN) == 1){
