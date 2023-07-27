@@ -4,18 +4,20 @@
 #include "driver/gpio.h"
 #include "tm1637.h"
 #include "analog_servo.h"
+#include "morse.h"
 
 #define PWM_PIN GPIO_NUM_33
 #define TM1637_CLK_PIN GPIO_NUM_18
 #define TM1637_DIO_PIN GPIO_NUM_19
-#define BEEP_PIN GPIO_NUM_13
+#define BEEP_PIN GPIO_NUM_17
 #define STRIKE_1_PIN GPIO_NUM_4
-#define STRIKE_2_PIN GPIO_NUM_32
+#define STRIKE_2_PIN GPIO_NUM_16
 #define STRIKE_3_PIN GPIO_NUM_2
+#define MORSE_PIN GPIO_NUM_0
 
 #define STRIKE_BTN GPIO_NUM_33
 
-#define SOUND_ON false
+#define SOUND_ON true
 
 //Beeps
 void beep() {
@@ -68,6 +70,21 @@ switch(*currStrikes) {
 }
 }
 
+void time_over() {
+    gpio_set_level(STRIKE_1_PIN, 1);
+    gpio_set_level(STRIKE_2_PIN, 1);
+    gpio_set_level(STRIKE_3_PIN, 1);
+}
+
+void update_modules() {
+
+
+}
+
+/*
+set_servo_angle(PWM_PIN, 80);
+*/
+
 //Main
 void app_main() {
 
@@ -83,15 +100,22 @@ int secondsLeft = 30;
 int maxStrikes = 3;
 int currStrikes = 0;
 
+bool isPlayerAlive = true;
 bool solved = false;
 
-set_servo_angle(PWM_PIN, 75);
+morse_blink("SOS", STRIKE_1_PIN);
 
-    while (secondsLeft > 0 && !solved) {
+//Main loop
+while (secondsLeft > 0 && !solved) {
         update_timer(tm1637, &secondsLeft);
+        update_modules();
 
         if(gpio_get_level(STRIKE_BTN) == 1){
             add_strike(&currStrikes);
         }
+
     }
+
+time_over();
+
 }

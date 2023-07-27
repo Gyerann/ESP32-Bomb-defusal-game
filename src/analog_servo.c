@@ -19,6 +19,8 @@ void init_pwm_fade(int channel){
 //Sets servo to angle
 void set_servo_angle(int PWM_PIN, int angle){
 
+  ledc_fade_func_install(LEDC_CHANNEL_0);
+
     // Calculate duty cycle for the desired angle (0 to 180 degrees)
   uint32_t duty = (uint32_t) (angle * (4095.0 / 180.0));
   
