@@ -7,6 +7,7 @@ Refactoring code for modularity
 Writing the skeleton and basic funcionality for testing  
 
 Todo:  
+Handler classes to abstract hardware  
 Unit testing  
 Networking (using code from other repo)  
 Develop more modules based on ones from KTANE and own ideas  
