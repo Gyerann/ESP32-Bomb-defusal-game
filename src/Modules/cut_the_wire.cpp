@@ -1,51 +1,27 @@
-class CutTheWireHandler{
-    private:
-    CutTheWireHandler(){
+#include "cut_the_wire.h"
 
-    }
-};
+//CutTheWireSolution
+CutTheWireSolution::CutTheWireSolution(int seed){
+    currentSolution = generate_solution(seed);
+}
 
-class CutTheWireModule{
+char CutTheWireSolution::generate_solution(int seed){
+    srand(seed);
+    char generatedSolution = rand() % 255;
+    return generatedSolution; 
+}
 
-    private:
-    bool wireSolutions[6];
+//CutTheWireHandler
+CutTheWireHandler::CutTheWireHandler(){}
 
-    CutTheWireModule(){
-        setup_module();
-    }
+//CutTheWireModule
+CutTheWireModule::CutTheWireModule(int seed){
+    CutTheWireSolution moduleSolution(seed);
+    currentSolution = moduleSolution.currentSolution;
+    setup_module(moduleSolution.currentSolution);
+}
 
-    //Todo: Develop algo to generate a solution based on a seed
-    //True -> cut wire
-    void init_solution_array(bool (&wireSolutions)[], char wireAmount){
-        wireSolutions[1] = {false};
-        wireSolutions[2] = {true};
-        wireSolutions[3] = {true};
-        wireSolutions[4] = {false};
-        wireSolutions[5] = {false};
-        wireSolutions[6] = {false};
-    }
+void CutTheWireModule::setup_module(char currentSolution){
+}
 
-    void attach_module(bool (&wireSolutions)[], char wireAmount){
-        //LOG($"Cut the Wire module attached with {wireAmount} wires. +
-        //Solution: {wireSolutions.List}");
-    }
-
-    //0 - module detached due to error
-    //1 - module detached after correct solution
-    //define macros maybe
-    void detach_module(char detachReason){
-        //LOG($"Cut the Wire module detached with code {detachReason}");
-    }
-
-    public:  
-
-    void setup_module(int seed = 0, char wireAmount = 6){
-        init_solution_array(wireSolutions, wireAmount);
-        attach_module(wireSolutions, wireAmount);
-        //Add a listener for user interactions, architecture has to be tought out
-    }
-
-    void solve_module(){
-        detach_module(1);
-    }
-};
+void CutTheWireModule::solve_module(){}
