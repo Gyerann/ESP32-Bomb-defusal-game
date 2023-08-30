@@ -1,4 +1,4 @@
-#include "analog_servo.h"
+#include "./servo_analog.h"
 
 //PWM macros
 #define PWM_FREQ 50

@@ -1,10 +1,7 @@
 class CutTheWireHandler{
-    
-    public:
+    private:
+    CutTheWireHandler(){
 
-    CutTheWireModule init_cut_the_wire(int seed = 0, char wireAmount = 6){
-        CutTheWireModule cutTheWireModule;
-        cutTheWireModule.setup_module(seed, wireAmount);
     }
 };
 
@@ -12,6 +9,10 @@ class CutTheWireModule{
 
     private:
     bool wireSolutions[6];
+
+    CutTheWireModule(){
+        setup_module();
+    }
 
     //Todo: Develop algo to generate a solution based on a seed
     //True -> cut wire
@@ -38,7 +39,7 @@ class CutTheWireModule{
 
     public:  
 
-    void setup_module(int seed = 0, char wireAmount){
+    void setup_module(int seed = 0, char wireAmount = 6){
         init_solution_array(wireSolutions, wireAmount);
         attach_module(wireSolutions, wireAmount);
         //Add a listener for user interactions, architecture has to be tought out
