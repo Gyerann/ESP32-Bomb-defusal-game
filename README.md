@@ -1,6 +1,12 @@
-# ESP32-IDF-Bomb-defusal-game  
+# ESP32-Bomb-defusal-game  
 A bomb defusal game on real hardware  
   
 The game is based on Keep Talking and Nobody Explodes.  
-Goal of the project is to develop a real life bomb defusal game that plays similar to the pc counterpart.
-Circuit diagrams, parts used and documentation will be uploaded as I continue development.
+Current state:  
+Refactoring code for modularity  
+Writing the skeleton and basic funcionality for testing  
+
+Todo:  
+Unit testing  
+Networking (using code from other repo)  
+Develop more modules based on ones from KTANE and own ideas  
