@@ -22,6 +22,7 @@ CutTheWireModule::CutTheWireModule(int seed){
 }
 
 void CutTheWireModule::setup_module(char currentSolution){
+    
 }
 
 void CutTheWireModule::solve_module(){}

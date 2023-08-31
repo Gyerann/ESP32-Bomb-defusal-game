@@ -19,6 +19,7 @@ The module is solved if each required wire gets cut
 */
 
 #include <random>
+#include <config.h>
 
 class CutTheWireSolution{
     public:
