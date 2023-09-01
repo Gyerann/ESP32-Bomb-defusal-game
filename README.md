@@ -2,12 +2,15 @@
 A bomb defusal game on real hardware  
   
 The game is based on Keep Talking and Nobody Explodes.  
-Current state:  
-Refactoring code for modularity  
-Writing the skeleton and basic funcionality for testing  
 
-Todo:  
-Handler classes to abstract hardware  
-Unit testing  
-Networking (using code from other repo)  
-Develop more modules based on ones from KTANE and own ideas  
+Gameplay:  
+The game is supposed to be played as 2 person local coop  
+On startup a timer starts, you have 90 seconds to defuse each module
+
+Available modules:  
+  
+  Cut the Wire:  
+  There are 6 wires, each connected. On startup a random solution is generated.  
+  You have to decide which wires to cut based on the manual and the cues given.  
+  Once each wire is cut the module is defused and will detach from the controller.  
+  If you cut the wrong wire you get a strike.
