@@ -20,6 +20,8 @@ The module is solved if each required wire gets cut
 
 #include <random>
 #include <config.h>
+#include "bitset"
+#include "esp_log.h"
 
 class CutTheWireSolution{
     public:
@@ -39,4 +41,7 @@ class CutTheWireModule{
     CutTheWireModule(int seed);
     void setup_module(char currentSolution);
     void solve_module();
+    void setup_gpio();
+    bool check_module();
+    std::bitset<6> get_state();
 };
