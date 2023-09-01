@@ -43,7 +43,7 @@ void CutTheWireModule::setup_gpio(){
     esp_rom_gpio_pad_select_gpio(CTW_WIRE_6);
     gpio_set_direction(CTW_WIRE_6, GPIO_MODE_INPUT);
     }
-    ESP_LOGI(CTW_TAG, "Pins set up");
+    ESP_LOGI(CTW_TAG, "GPIO set up");
 }
 
 void CutTheWireModule::setup_module(char currentSolution){

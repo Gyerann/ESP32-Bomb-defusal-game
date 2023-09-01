@@ -16,6 +16,8 @@ extern "C" void app_main() {
     CutTheWireModule cutTheWireModule(ctwSeed);
     GPIOHandler gpioHandler;
 
+
+    //For testing
     while(1){
         cutTheWireModule.get_state();
         vTaskDelay(1000/portTICK_PERIOD_MS);
