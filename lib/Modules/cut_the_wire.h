@@ -19,7 +19,7 @@ The module is solved if each required wire gets cut
 */
 
 #include <random>
-#include <config.h>
+#include "../config.h"
 #include "bitset"
 #include "esp_log.h"
 

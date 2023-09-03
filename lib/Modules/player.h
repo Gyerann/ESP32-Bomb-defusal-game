@@ -1,6 +1,7 @@
-#include "config.h"
+#include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "tm1637.h"
+#include "../config.h"
 
 class PlayerModuleHandler{};
 
@@ -24,4 +25,4 @@ class StrikeModule{
     char currentStrikes{0};
     StrikeModule();
     void add_strike(PlayerModule playerModule);
-}
+};

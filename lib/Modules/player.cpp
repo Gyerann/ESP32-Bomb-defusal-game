@@ -2,28 +2,19 @@
 
 //PlayerModule
 PlayerModule::PlayerModule(){
-    TimerModule timerModule;
-    StrikeModule strikeModule;
+    //TimerModule timerModule;
+    //StrikeModule strikeModule;
     setup_gpio();
 }
 
-PlayerModule::setup_gpio(){
+void PlayerModule::setup_gpio(){
     {esp_rom_gpio_pad_select_gpio(SPEAKER_PIN);
     gpio_set_direction(SPEAKER_PIN, GPIO_MODE_OUTPUT);
-
-    esp_rom_gpio_pad_select_gpio(STRIKE_LED_1);
-    gpio_set_direction(STRIKE_LED_1, GPIO_MODE_OUTPUT);
-
-    esp_rom_gpio_pad_select_gpio(STRIKE_LED_2);
-    gpio_set_direction(STRIKE_LED_2, GPIO_MODE_OUTPUT);
-
-    esp_rom_gpio_pad_select_gpio(STRIKE_LED_3);
-    gpio_set_direction(STRIKE_LED_3, GPIO_MODE_OUTPUT);
     }
     ESP_LOGI(PLAYER_TAG, "GPIO set up");
 }
 
-PlayerModule::boom(){
+void PlayerModule::boom(){
     ESP_LOGI(PLAYER_TAG, "BOOM!!!");
 }
 
@@ -32,21 +23,29 @@ TimerModule::TimerModule(){
     //setup_pins();
 }
 
-TimerModule::beep(){
+void TimerModule::beep(){
     gpio_set_level(SPEAKER_PIN, 1);
     vTaskDelay(125/portTICK_PERIOD_MS);
 }
 
-TimerModule::update_timer(){
+void TimerModule::update_timer(){
     //implement tm1637 timer update
 }
 
 //StrikeModule
 StrikeModule::StrikeModule(){
-    //setup_pins();
+    {esp_rom_gpio_pad_select_gpio(STRIKE_LED_1);
+    gpio_set_direction(STRIKE_LED_1, GPIO_MODE_OUTPUT);
+
+    esp_rom_gpio_pad_select_gpio(STRIKE_LED_2);
+    gpio_set_direction(STRIKE_LED_2, GPIO_MODE_OUTPUT);
+
+    esp_rom_gpio_pad_select_gpio(STRIKE_LED_3);
+    gpio_set_direction(STRIKE_LED_3, GPIO_MODE_OUTPUT);
+    }
 }
 
-StrikeModule::add_strike(PlayerModule playerModule){
+void StrikeModule::add_strike(PlayerModule playerModule){
     currentStrikes++;
     switch (currentStrikes)
     {
