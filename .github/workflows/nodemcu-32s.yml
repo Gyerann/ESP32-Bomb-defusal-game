@@ -16,4 +16,4 @@ jobs:
     - name: Run tests on NodeMCU-32S
       env:
         PLATFORMIO_AUTH_TOKEN: ${{ secrets.PLATFORMIO_AUTH_TOKEN }}
-      run: platformio remote test -e nodemcu-32s -v
+      run: platformio remote test -vvv -e nodemcu-32s -v
