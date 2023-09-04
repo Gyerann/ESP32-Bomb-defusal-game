@@ -4,17 +4,16 @@
 #define TEST_TAG "test_playermodule"
 
 void setUp(){
-
+    ESP_LOGI(TEST_TAG, "-----test start-----");
 }
 
 void tearDown(){
-
+    ESP_LOGI(TEST_TAG, "-----test end-----");
 }
 
 void test_strike(){
     PlayerModule playerModule;
     StrikeModule strikeModule;
-    
     TEST_ASSERT(strikeModule.currentStrikes == 0);
     TEST_ASSERT(gpio_get_level(STRIKE_LED_1) == 0);
     TEST_ASSERT(gpio_get_level(STRIKE_LED_2) == 0);
@@ -40,7 +39,8 @@ void test_strike(){
 }
 
 void test_timer(){
-
+    PlayerModule playerModule;
+    TimerModule timerModule;
 }
 
 extern "C" int app_main(int argc, char** argv){
