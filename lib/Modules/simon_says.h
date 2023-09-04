@@ -1,6 +1,7 @@
 #include <random>
 #include "../config.h"
 #include "esp_log.h"
+#include <stdio>
 
 class SimonSaysHandler{
     public:
@@ -9,14 +10,15 @@ class SimonSaysHandler{
 
 class SimonSaysSeries{
     public:
+    uint8_t* outSeries;
     SimonSaysSeries();
-    int generate_series(int seed);
+    void generate_series(uint8_t seed, uint8_t* outSeries);
 };
 
 class SimonSaysModule{
     public:
-    int currentSeries;
-    SimonSaysModule(int seed);
+    uint8_t* currentSeries[7] = {0};
+    SimonSaysModule(uint8_t seed);
     void setup_module();
     void setup_gpio();
     void continue_series();
