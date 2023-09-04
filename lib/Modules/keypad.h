@@ -10,7 +10,7 @@ class KeypadHandler{
 class KeypadSolution{
     public:
     KeypadSolution();
-    generate_solution(int seed);
+    void generate_solution(int seed);
 };
 
 class Keypad{

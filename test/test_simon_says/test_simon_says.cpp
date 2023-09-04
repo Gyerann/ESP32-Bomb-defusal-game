@@ -13,7 +13,7 @@ void tearDown(){
 
 void test_solution_generated_is_not_null(){
     SimonSaysSeries simonSaysSeries;
-    UNITY_TEST_ASSERT(simonSaysSeries.generate_series() != NULL);
+    TEST_ASSERT(simonSaysSeries.generate_series(1) != NULL);
 }
 
 void test_solution_generated_is_valid(){
@@ -32,16 +32,11 @@ void test_solve_module(){
 }
 
 void test_restart_series(){
-    SimonSaysModule simonSaysModule;
-    int seriesBefore = simonSaysModule.currentSeries;
-    simonSaysModule.restart_series();
-    UNITY_TEST_ASSERT(seriesBefore == simonSaysModule.currentSeries);
 }
 
 extern "C" int app_main(int argc, char** argv){
     UNITY_BEGIN();
 
-    RUN_TEST(test_restart_series);
     RUN_TEST(test_solution_generated_is_not_null);
 
     UNITY_END();

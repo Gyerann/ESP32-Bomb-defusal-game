@@ -9,14 +9,14 @@ class SimonSaysHandler{
 
 class SimonSaysSeries{
     public:
-    SimonSaysSolution();
-    generate_series(int seed);
+    SimonSaysSeries();
+    int generate_series(int seed);
 };
 
 class SimonSaysModule{
     public:
     int currentSeries;
-    SimonSays(int seed);
+    SimonSaysModule(int seed);
     void setup_module();
     void setup_gpio();
     void continue_series();

@@ -1,6 +1,6 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include "tm1637.h"
+#include "../Hardware/tm1637.h"
 #include "../config.h"
 
 class PlayerModuleHandler{};
