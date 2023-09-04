@@ -17,4 +17,4 @@ jobs:
         python -m pip install --upgrade pip
         pip install platformio
     - name: Tests on NodeMCU-32S
-      run: platformio test -e nodemcu-32s
+      run: platformio test -vvv -e nodemcu-32s
