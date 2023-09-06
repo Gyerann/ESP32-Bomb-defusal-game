@@ -12,7 +12,7 @@
 #include "bitset"
 
 extern "C" void app_main() {
-    int ctwSeed = rand();
+    uint8_t ctwSeed = rand();
     CutTheWireModule cutTheWireModule(ctwSeed);
     GPIOHandler gpioHandler;
 

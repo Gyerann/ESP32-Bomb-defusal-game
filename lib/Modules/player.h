@@ -14,7 +14,7 @@ class PlayerModule{
 
 class TimerModule{
     public: 
-    int timeRemaining{TIMER_START};
+    uint16_t timeRemaining{TIMER_START};
     TimerModule();
     void beep();
     void update_timer();
@@ -22,7 +22,7 @@ class TimerModule{
 
 class StrikeModule{
     public:
-    char currentStrikes{0};
+    uint8_t currentStrikes{0};
     StrikeModule();
     void add_strike(PlayerModule playerModule);
 };

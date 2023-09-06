@@ -25,9 +25,9 @@ The module is solved if each required wire gets cut
 
 class CutTheWireSolution{
     public:
-    CutTheWireSolution(int seed);
-    char currentSolution;
-    char generate_solution(int seed);
+    CutTheWireSolution(uint8_t seed);
+    uint8_t currentSolution;
+    uint8_t generate_solution(uint8_t seed);
 };
 
 class CutTheWireHandler{
@@ -37,9 +37,9 @@ class CutTheWireHandler{
 
 class CutTheWireModule{
     public:
-    char currentSolution;
-    CutTheWireModule(int seed);
-    void setup_module(char currentSolution);
+    uint8_t currentSolution;
+    CutTheWireModule(uint8_t seed);
+    void setup_module(uint8_t currentSolution);
     void solve_module();
     void setup_gpio();
     bool check_module();

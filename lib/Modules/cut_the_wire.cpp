@@ -1,13 +1,13 @@
 #include "cut_the_wire.h"
 
 //CutTheWireSolution
-CutTheWireSolution::CutTheWireSolution(int seed){
+CutTheWireSolution::CutTheWireSolution(uint8_t seed){
     currentSolution = generate_solution(seed);
 }
 
-char CutTheWireSolution::generate_solution(int seed){
+uint8_t CutTheWireSolution::generate_solution(uint8_t seed){
     //srand(seed);
-    char generatedSolution = seed % 255;
+    uint8_t generatedSolution = seed % 255;
     return generatedSolution; 
 }
 
@@ -15,7 +15,7 @@ char CutTheWireSolution::generate_solution(int seed){
 CutTheWireHandler::CutTheWireHandler(){}
 
 //CutTheWireModule
-CutTheWireModule::CutTheWireModule(int seed){
+CutTheWireModule::CutTheWireModule(uint8_t seed){
     ESP_LOGI(CTW_TAG, "Module discovered");
     CutTheWireSolution moduleSolution(seed);
     currentSolution = moduleSolution.currentSolution;
