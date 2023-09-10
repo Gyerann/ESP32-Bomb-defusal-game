@@ -1,7 +1,7 @@
 #include <random>
 #include "../config.h"
 #include "esp_log.h"
-#include <stdio>
+#include <stdio.h>
 
 class SimonSaysHandler{
     public:

@@ -10,6 +10,7 @@ SimonSaysSeries::SimonSaysSeries(){
 
 }
 
+/*
 void SimonSaysSeries::generate_series(uint8_t seed, uint8_t* outSeries){
     uint8_t seriesLength = 3 + srand(seed % 4);
     for (uint8_t i = 0; i < (seriesLength - 1); i++){
@@ -42,3 +43,4 @@ void SimonSaysModule::solve_module(){
 void SimonSaysModule::restart_series(){
     
 }
+*/

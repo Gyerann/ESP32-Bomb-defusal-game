@@ -6,8 +6,8 @@ set GPIO pins to pulldown mode
 Digital input only pins:
 GPIO34
 GPIO35
-GPIO36 (VP)
-GPIO39 (VN)
+GPIO36
+GPIO39
 */
 
 //CutTheWireSolution
@@ -56,7 +56,7 @@ void CutTheWireModule::setup_gpio(){
     ESP_LOGI(CTW_TAG, "GPIO set up");
 }
 
-void CutTheWireModule::setup_module(char currentSolution){
+void CutTheWireModule::setup_module(uint8_t currentSolution){
     setup_gpio();
 }
 
