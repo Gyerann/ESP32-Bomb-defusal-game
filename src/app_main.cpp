@@ -11,6 +11,11 @@
 #include "gpio_handler.h"
 #include "bitset"
 
+/*
+TODO:
+Use esp idf wrapper classes for GPIO handling
+*/
+
 extern "C" void app_main() {
     uint8_t ctwSeed = rand();
     CutTheWireModule cutTheWireModule(ctwSeed);

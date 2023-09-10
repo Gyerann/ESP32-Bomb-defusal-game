@@ -1,5 +1,15 @@
 #include "cut_the_wire.h"
 
+/*
+TODO:
+set GPIO pins to pulldown mode
+Digital input only pins:
+GPIO34
+GPIO35
+GPIO36 (VP)
+GPIO39 (VN)
+*/
+
 //CutTheWireSolution
 CutTheWireSolution::CutTheWireSolution(uint8_t seed){
     currentSolution = generate_solution(seed);
