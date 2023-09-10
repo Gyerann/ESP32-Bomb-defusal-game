@@ -7,6 +7,7 @@ class PlayerModuleHandler{};
 
 class PlayerModule{
     public:
+    uint8_t modulesSolved{0};
     PlayerModule();
     void boom();
     void setup_gpio();

@@ -4,11 +4,11 @@
 #define TEST_TAG "test_playermodule"
 
 void setUp(){
-    ESP_LOGI(TEST_TAG, "-----test start-----");
+
 }
 
 void tearDown(){
-    ESP_LOGI(TEST_TAG, "-----test end-----");
+
 }
 
 void test_strike(){
@@ -43,11 +43,15 @@ void test_timer(){
     TimerModule timerModule;
 }
 
+void test_solves_after_setup_equals_zero(){
+    PlayerModule playerModule;
+    TEST_ASSERT(playerModule.modulesSolved == 0);
+}
+
 extern "C" int app_main(int argc, char** argv){
     UNITY_BEGIN();
-
     RUN_TEST(test_strike);
-
+    RUN_TEST(test_solves_after_setup_equals_zero);
     UNITY_END();
 
     return 0;

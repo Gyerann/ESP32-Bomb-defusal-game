@@ -22,26 +22,17 @@ The module is solved if each required wire gets cut
 #include "../config.h"
 #include "bitset"
 #include "esp_log.h"
-
-class CutTheWireSolution{
-    public:
-    CutTheWireSolution(uint8_t seed);
-    uint8_t currentSolution;
-    uint8_t generate_solution(uint8_t seed);
-};
-
-class CutTheWireHandler{
-    private:
-    CutTheWireHandler();
-};
+#include "player.h"
 
 class CutTheWireModule{
     public:
+    bool isModuleActive;
     uint8_t currentSolution;
     CutTheWireModule(uint8_t seed);
     void setup_module(uint8_t currentSolution);
-    void solve_module();
+    void solve_module(PlayerModule* playerModule);
     void setup_gpio();
     bool check_module();
+    uint8_t generate_solution(uint8_t seed);
     std::bitset<6> get_state();
 };

@@ -3,7 +3,7 @@
 
 #include "driver/spi_master.h"
 
-// Following definitions are bollowed from 
+// Following definitions are borrowed from 
 // http://robotcantalk.blogspot.com/2015/03/interfacing-arduino-with-ssd1306-driven.html
 
 /* Control byte for i2c

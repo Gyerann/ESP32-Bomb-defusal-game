@@ -1,5 +1,6 @@
 #include "app_main.h"
 
+//Remove this function later
 void test_display(){
     SSD1306_t display;
     int center, top, bottom;

@@ -10,28 +10,32 @@ GPIO36
 GPIO39
 */
 
-//CutTheWireSolution
-CutTheWireSolution::CutTheWireSolution(uint8_t seed){
+/*
+class CutTheWireModule{
+    public:
+    uint8_t currentSolution;
+    CutTheWireModule(uint8_t seed);
+    void setup_module(uint8_t currentSolution);
+    void solve_module();
+    void setup_gpio();
+    bool check_module();
+    uint8_t generate_solution(uint8_t seed);
+    std::bitset<6> get_state();
+};
+*/
+
+CutTheWireModule::CutTheWireModule(uint8_t seed){
+    ESP_LOGI(CTW_TAG, "Module discovered");
     currentSolution = generate_solution(seed);
+    setup_module(currentSolution);
+    ESP_LOGI(CTW_TAG, "Seed: %i Solution:%s", seed, 
+        std::bitset<8>(currentSolution).to_string().c_str());
 }
 
-uint8_t CutTheWireSolution::generate_solution(uint8_t seed){
+uint8_t CutTheWireModule::generate_solution(uint8_t seed){
     //srand(seed);
     uint8_t generatedSolution = seed % 255;
     return generatedSolution; 
-}
-
-//CutTheWireHandler
-CutTheWireHandler::CutTheWireHandler(){}
-
-//CutTheWireModule
-CutTheWireModule::CutTheWireModule(uint8_t seed){
-    ESP_LOGI(CTW_TAG, "Module discovered");
-    CutTheWireSolution moduleSolution(seed);
-    currentSolution = moduleSolution.currentSolution;
-    setup_module(moduleSolution.currentSolution);
-    ESP_LOGI(CTW_TAG, "Seed: %i Solution:%s", seed, 
-        std::bitset<8>(this->currentSolution).to_string().c_str());
 }
 
 void CutTheWireModule::setup_gpio(){
@@ -60,7 +64,10 @@ void CutTheWireModule::setup_module(uint8_t currentSolution){
     setup_gpio();
 }
 
-void CutTheWireModule::solve_module(){}
+void CutTheWireModule::solve_module(PlayerModule* playerModule){
+    playerModule->modulesSolved++;
+    isModuleActive = false;
+}
 
 std::bitset<6> CutTheWireModule::get_state(){
     std::bitset<6> moduleState;
