@@ -12,3 +12,4 @@
 #include "bitset"
 #include "ssd1306.h"
 #include "font8x8_basic.h"
+#include "server.h"
