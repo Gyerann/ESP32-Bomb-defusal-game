@@ -13,4 +13,10 @@ Available modules:
   There are 6 wires, each connected. On startup a random solution is generated.  
   You have to decide which wires to cut based on the manual and the cues given.  
   Once each wire is cut the module is defused and will detach from the controller.  
-  If you cut the wrong wire you get a strike.
+  If you cut the wrong wire you get a strike.  
+
+  Simon Says:  
+
+  Keypad:  
+
+  
