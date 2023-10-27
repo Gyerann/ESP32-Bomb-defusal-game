@@ -1,38 +1,49 @@
-/*
-Cut the Wire module description:
+#include "module.h"
+#include "defusable_module.h"
 
-Hardware:
-6 Wires with different colors
-3v + 1K Ohms in, 3 + 3 parallel connection
-1. O----O Purple ----(LED) ---- GPIO
-2. O----O White  ----(LED) ---- GPIO
-3. O----O Yellow ----(LED) ---- GPIO
-4. O----O Orange ----(LED) ---- GPIO
-5. O----O Green  ----(LED) ---- GPIO
-6. O----O Blue   ----(LED) ---- GPIO
+#pragma once
 
-Gameplay:
-A char is randomly generated
-0   -> wire gets cut
-1   -> wire doesnt get cut
-The module is solved if each required wire gets cut
-*/
-
-#include <random>
-#include "../config.h"
-#include "bitset"
-#include "esp_log.h"
-#include "player.h"
-
-class CutTheWireModule{
+class CutTheWire : protected DefusableModule{
     public:
-    bool isModuleActive;
-    uint8_t currentSolution;
-    CutTheWireModule(uint8_t seed);
-    void setup_module(uint8_t currentSolution);
-    void solve_module(PlayerModule* playerModule);
-    void setup_gpio();
-    bool check_module();
-    uint8_t generate_solution(uint8_t seed);
-    std::bitset<6> get_state();
+    CutTheWire(){
+        this->_tag = "Cut the Wire";
+        ESP_LOGI(this->_tag, "Constructing module without seed...");
+        this->_isSetUp = true;
+        this->_solution = rand() % 256;
+        setup_gpio();
+        ESP_LOGI(this->_tag, "Module constructed successfully. Solution: %i", this->_solution);
+    }
+
+    CutTheWire(uint8_t seed){
+        this->_tag = "Cut the Wire";
+        ESP_LOGI(this->_tag, "Constructing module with seed %i...", seed);
+        srand(seed);
+        this->_solution = rand() % 256;
+        this->_isSetUp = true;
+        setup_gpio();
+        ESP_LOGI(this->_tag, "Module constructed successfully. Solution: %i", this->_solution);
+        }
+    
+    protected:
+    void setup_gpio(){
+        esp_rom_gpio_pad_select_gpio(CTW_WIRE_1);
+        gpio_set_direction(CTW_WIRE_1, GPIO_MODE_INPUT);
+
+        esp_rom_gpio_pad_select_gpio(CTW_WIRE_2);
+        gpio_set_direction(CTW_WIRE_2, GPIO_MODE_INPUT);
+
+        esp_rom_gpio_pad_select_gpio(CTW_WIRE_3);
+        gpio_set_direction(CTW_WIRE_3, GPIO_MODE_INPUT);
+
+        esp_rom_gpio_pad_select_gpio(CTW_WIRE_4);
+        gpio_set_direction(CTW_WIRE_4, GPIO_MODE_INPUT);
+
+        esp_rom_gpio_pad_select_gpio(CTW_WIRE_5);
+        gpio_set_direction(CTW_WIRE_5, GPIO_MODE_INPUT);
+
+        esp_rom_gpio_pad_select_gpio(CTW_WIRE_6);
+        gpio_set_direction(CTW_WIRE_6, GPIO_MODE_INPUT);
+
+        ESP_LOGI(this->_tag, "GPIOs set up.");
+    }
 };

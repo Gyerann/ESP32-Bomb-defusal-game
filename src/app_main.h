@@ -5,7 +5,6 @@
 #include "tm1637.h"
 #include "servo_analog.h"
 #include "./config.h"
-#include "cut_the_wire.h"
 #include "esp_log.h"
 #include "iostream"
 #include "gpio_handler.h"
@@ -13,3 +12,4 @@
 #include "ssd1306.h"
 #include "font8x8_basic.h"
 #include "server.h"
+#include "module.h"
