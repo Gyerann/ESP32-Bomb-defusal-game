@@ -1,4 +1,7 @@
 #include "app_main.h"
+#include "modules.h"
+
+#pragma once
 
 //void test_display(){
 //    SSD1306_t display;
