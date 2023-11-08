@@ -11,6 +11,10 @@ class Module {
         this->_s_activeModules++;
     }
     
+    void log_config(){
+        ESP_LOGI(this->_tag, "log_config called in empty object. Override this function.");
+    }
+
     protected:
     ~Module(){
         ESP_LOGI(this->_tag, "Module destroyed.");

@@ -35,3 +35,33 @@
 #define DISPLAY_SDA_PIN     GPIO_NUM_22
 #define DISPLAY_SCL_PIN     GPIO_NUM_21
 #define DISPLAY_RESET_PIN   GPIO_NUM_26
+
+//This might be unecessary
+
+class ConfigHandler{
+public:
+    
+    ConfigHandler(){
+        ESP_LOGI(this->_tag, "ConfigHandler constructed.");
+    }
+
+    ~ConfigHandler(){
+        ESP_LOGI(this->_tag, "ConfigHandler destructed.");
+    }
+
+    void log_config(){
+        
+        //CTW config
+        ESP_LOGI(this->_tag, "%s config:", CTW_TAG);
+        ESP_LOGI(this->_tag, "Wire 1 pin: ", CTW_WIRE_1);
+        ESP_LOGI(this->_tag, "Wire 2 pin: ", CTW_WIRE_2);
+        ESP_LOGI(this->_tag, "Wire 3 pin: ", CTW_WIRE_3);
+        ESP_LOGI(this->_tag, "Wire 4 pin: ", CTW_WIRE_4);
+        ESP_LOGI(this->_tag, "Wire 5 pin: ", CTW_WIRE_5);
+        ESP_LOGI(this->_tag, "Wire 6 pin: ", CTW_WIRE_6);
+    
+    }
+
+private:
+    char* _tag = "ConfigHandler";
+};

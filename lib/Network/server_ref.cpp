@@ -13,6 +13,10 @@ public:
         update_webpage();
     }
 
+    ~Server(){
+        ESP_LOGI(this->_tag, "Server destructed.");
+    }
+
 protected:
 
     void connect_wifi(){
@@ -135,4 +139,18 @@ protected:
     char* _tag = "Server";
     uint8_t _retry_num{};
     EventGroupHandle_t _wifi_event_group;
+};
+
+class APIHandler{
+public:
+    APIHandler(){
+        ESP_LOGI(this->_tag, "API Handler constructed.");
+    }
+
+    ~APIHandler(){
+        ESP_LOGI(this->_tag, "API Handler destructed.");
+    }
+    
+protected:
+    char* _tag = "API Handler";
 };
