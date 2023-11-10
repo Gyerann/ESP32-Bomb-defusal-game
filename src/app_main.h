@@ -13,3 +13,6 @@
 #include "font8x8_basic.h"
 #include "server.h"
 #include "module.h"
+#include "mpu6050.hpp"
+#include "kalmanfilter.hpp"
+#include <cmath>
