@@ -28,4 +28,4 @@ class SimonSays : protected DefusableModule{
     void setup_gpio(){
         //Override parent function with actual setup
     }
-}
+};

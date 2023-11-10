@@ -8,7 +8,6 @@ class Module {
     public:
     Module(){
         ESP_LOGI(this->_tag, "Module grandparent constructor called.");
-        this->_s_activeModules++;
     }
     
     void log_config(){
@@ -32,6 +31,5 @@ class Module {
 
     char* _tag = "Empty module";
     bool _isSetUp{false};
-    char _state{0};
-    static uint8_t _s_activeModules{0};
+    char _state{};
 };

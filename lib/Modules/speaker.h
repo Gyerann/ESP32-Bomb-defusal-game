@@ -22,4 +22,4 @@ class Speaker : protected Module{
         gpio_set_level(SPEAKER_PIN, 1);
         vTaskDelay(125/portTICK_PERIOD_MS);
     }
-}
+};

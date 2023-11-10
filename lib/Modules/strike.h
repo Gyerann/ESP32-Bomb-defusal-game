@@ -16,7 +16,7 @@ class StrikeModule : protected Module{
     StrikeModule(uint8_t strikes){
         this->_tag = "Strike module";
         ESP_LOGI(this->_tag, "Constructing custom strike module...");
-        this->_strikes = strike;
+        this->_strikes = strikes;
         this->_isSetUp = true;
         setup_gpio();
         ESP_LOGI(this->_tag, "Custom strike module constructed successfully, 0/%i.", this->_strikes);
@@ -50,4 +50,4 @@ class StrikeModule : protected Module{
     private:
     uint8_t _strikes{3};
     uint8_t _currentStrikes{0};
-}
+};

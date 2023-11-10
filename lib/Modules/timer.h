@@ -10,7 +10,7 @@ class TimerModule : protected Module{
         ESP_LOGI(this->_tag, "Constructing default timer module...");
         this->_isSetUp = true;
         setup_gpio();
-        ESP_LOGI(this->_tag, "Default timer module constructed successfully, %is.", this->_time);
+        ESP_LOGI(this->_tag, "Default timer module constructed successfully, %is.", static_cast<int>(this->_time));
     }
 
     TimerModule(uint32_t time){
@@ -19,7 +19,7 @@ class TimerModule : protected Module{
         this->_time = time;
         this->_isSetUp = true;
         setup_gpio();
-        ESP_LOGI(this->_tag, "Custom timer module constructed successfully, %is.", this->_time);
+        ESP_LOGI(this->_tag, "Custom timer module constructed successfully, %is.", static_cast<int>(this->_time));
     }
 
     protected:
@@ -34,4 +34,4 @@ class TimerModule : protected Module{
 
     private:
     uint32_t _time{120};
-}
+};

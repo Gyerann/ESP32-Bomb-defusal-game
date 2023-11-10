@@ -17,6 +17,7 @@
 #include <lwip/sys.h>
 #include <lwip/api.h>
 #include <lwip/netdb.h>
+#include <config.h>
 #pragma once
 
 #ifdef __cplusplus
