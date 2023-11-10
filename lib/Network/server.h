@@ -20,22 +20,73 @@
 #include <config.h>
 #pragma once
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
+//This is supposed to be a singleton
 
-static void event_handler(void *arg, esp_event_base_t event_base,
-                          int32_t event_id, void *event_data);
+#define WIFI_SSID   "******"
+#define WIFI_PASS   "******"
+#define WIFI_MAX_RETRY      5
+#define WIFI_CONNECTED_BIT  BIT0
+#define WIFI_FAIL_BIT       BIT1
 
-void connect_wifi(void);
+class Server {
+public:
+    Server(){
+        this->_retry_num = WIFI_MAX_RETRY;
+        connect_wifi();
+        setup_server();
+        update_webpage();
+    }
 
-esp_err_t send_web_page(httpd_req_t *req);
+    ~Server(){
+        ESP_LOGI(this->_tag, "Server destructed.");
+    }
 
-esp_err_t get_req_handler(httpd_req_t *req);
+protected:
 
-httpd_handle_t setup_server(void);
+    void connect_wifi(){
+        ESP_LOGI(this->_tag, "connect_wifi called.");
+    }
 
-#ifdef __cplusplus
-}
-#endif
+    httpd_handle_t setup_server(){
+        httpd_config_t config = HTTPD_DEFAULT_CONFIG();
+        httpd_handle_t server = NULL;
+
+        if (httpd_start(&server, &config) == ESP_OK)
+        {
+            httpd_register_uri_handler(server, &this->_uriHandler);
+        }
+
+        ESP_LOGI(this->_tag, "setup_server called.");
+        
+        return server;
+    }
+
+    void send_state(){
+        ESP_LOGI(this->_tag, "send_state called.");
+    }
+
+    void update_webpage(){
+        ESP_LOGI(this->_tag, "update_webpage called.");
+    }
+
+    char* _tag = "Server";
+    uint8_t _retry_num{};
+    EventGroupHandle_t _wifi_event_group;
+    httpd_uri_t _uriHandler;
+};
+
+//---------------------------------------------
+
+class APIHandler{
+public:
+    APIHandler(){
+        ESP_LOGI(this->_tag, "API Handler constructed.");
+    }
+
+    ~APIHandler(){
+        ESP_LOGI(this->_tag, "API Handler destructed.");
+    }
+    
+protected:
+    char* _tag = "API Handler";
+};

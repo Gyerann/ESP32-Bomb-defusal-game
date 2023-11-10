@@ -1,6 +1,7 @@
 #include "driver/gpio.h"
-#include <random>
 #include "esp_log.h"
+
+#pragma once
 
 //Module tags
 #define CTW_TAG     "Cut the Wire"
